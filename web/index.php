@@ -9,3 +9,10 @@ use Serious\User\UserManager;
 $user = new User();
 $userManager = new UserManager();
 
+$form = new UserForm();
+
+if ($form->isValid())
+{
+    $form->save();
+}
+
