@@ -4,14 +4,12 @@ require_once '../Form/Form.php';
 
 class UserForm extends Form
 {
-    protected $storage;
-    protected $validator;
     
-    public function __construct(StorageInterface $storage, UserInterface $user, ValidatorInterface $validator) 
+    
+    public function __construct($data = null) 
     {
-        $this->storage = $storage;
-        $this->user = $user;
-        $this->validator = $validator;
+        $this->data = $data;
+        
     }
     
     public function isValid()
