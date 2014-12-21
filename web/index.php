@@ -1,18 +1,17 @@
 <?php
-require_once '../User/User.php';
-require_once '../User/UserManager.php';
+define('PROJECT_ROOT', dirname(dirname(__FILE__)));
 
-use Serious\User\User;
-use Serious\User\UserManager;
+require_once(__DIR__ . '/../src/Autoloader.php');
 
+use Serious\Psr4AutoloaderClass;
+use Serious\Serious;
 
-$user = new User();
-$userManager = new UserManager();
+$loader = new Psr4AutoloaderClass();
+$loader->register();
 
-$form = new UserForm();
+$loader->addNamespace('Serious', PROJECT_ROOT . '/src');
+$loader->addNamespace('Serious', PROJECT_ROOT . '/tests');
 
-if ($form->isValid())
-{
-    $form->save();
-}
+$serious = new Serious();
+$serious->init();
 
